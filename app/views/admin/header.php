@@ -27,10 +27,11 @@
                         <a class="nav-link" href="<?php echo base_url('?pagename=admin-roles'); ?>">Roles</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lowongan Kerja</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" href="#">Action 1</a>
-                            <a class="dropdown-item" href="#">Action 2</a>
+                            <a class="dropdown-item" href="<?php echo base_url("?pagename=admin-lokers") ?>">Lihat Data</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?php echo base_url("?pagename=admin-kategoris"); ?>">Kategori</a>
                         </div>
                     </li>
                 </ul>

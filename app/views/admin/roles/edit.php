@@ -9,13 +9,13 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-12 col-md-3">
-            <form action="<?php echo base_url('?pagename=admin-role-update&id=' . $id_role) ?>" method="POST">
+            <form action="<?php echo base_url('?pagename=admin-roles-update&id=' . $id_role) ?>" method="POST">
 
                 <input type="hidden" name="id_role" value="<?php echo $id_role; ?>">
 
                 <div class="form-group">
                     <label for="">Nama Lengkap</label>
-                    <input type="text" name="nama_lengkap" class="form-control" value="<?php echo $nama_lengkap ?>">
+                    <input type="text" name="nama_role" class="form-control" value="<?php echo $nama_role ?>">
                 </div>
 
                 <button class="btn btn-primary">Simpan Data</button>

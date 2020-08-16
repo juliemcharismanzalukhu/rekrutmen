@@ -1,16 +1,16 @@
 <?php 
 
-model('RolesModel');
+model('KategorisModel');
 
-class RolesAdminController extends Controller {
+class KategorisAdminController extends Controller {
 
     public function index() {
 
-        $model = new RolesModel();
+        $model = new KategorisModel();
 
         view('admin/header');
-        view('admin/roles/index', [
-            'roles' => $model->paginate(10)
+        view('admin/kategori/index', [
+            'kategoris' => $model->paginate(10)
         ]);
         view('admin/footer');
     }
@@ -18,10 +18,10 @@ class RolesAdminController extends Controller {
     public function add() 
     {
 
-        $roles = new RolesModel();
+        $roles = new KategorisModel();
 
         view('admin/header');
-        view('admin/roles/add', [
+        view('admin/kategori/add', [
             'roles' => $roles->findAll()
         ]);
         view('admin/footer');
@@ -31,15 +31,15 @@ class RolesAdminController extends Controller {
     public function store() 
     {
 
-        $model = new RolesModel();
+        $model = new KategorisModel();
         
         $data = [
-            'nama_role'  => $this->request('nama_role')
+            'nama_kategori'  => $this->request('nama_kategori')
         ];
 
         $model->insert($data);
 
-        Redirect::to(base_url('?pagename=admin-roles'));
+        Redirect::to(base_url('?pagename=admin-kategoris'));
 
     }
 
@@ -47,25 +47,25 @@ class RolesAdminController extends Controller {
     {
 
         $data = [
-            'nama_role'  => $this->request('nama_role'),
+            'nama_kategori'  => $this->request('nama_kategori'),
         ];
 
-        $model = new RolesModel();
+        $model = new KategorisModel();
 
         $model->find($id)->update($data);
 
-        Redirect::to(base_url('?pagename=admin-roles'));
+        Redirect::to(base_url('?pagename=admin-kategoris'));
 
     }
 
     public function show($id)
     {
 
-        $model = new RolesModel();
+        $model = new KategorisModel();
 
         view('admin/header');
         
-        view('admin/roles/edit', [
+        view('admin/kategori/edit', [
             'edit' => $model->find($id)->get()
         ]);
         
@@ -75,11 +75,11 @@ class RolesAdminController extends Controller {
     public function delete($id) 
     {
         
-        $model = new RolesModel();
+        $model = new KategorisModel();
 
         $model->find($id)->delete();
 
-        Redirect::to(base_url('?pagename=admin-roles'));
+        Redirect::to(base_url('?pagename=admin-kategoris'));
 
     }
 

@@ -3,7 +3,7 @@
         <div class="col-12">
             <div class="d-flex justify-content-between">
                 <div>
-                    <a href="<?php echo base_url('?pagename=admin-roles-add') ?>" class="btn btn-primary mb-3">Tambah Role</a>
+                    <a href="<?php echo base_url('?pagename=admin-kategori-add') ?>" class="btn btn-primary mb-3">Tambah Kategori</a>
                 </div>
                 <div></div>
             </div>
@@ -16,12 +16,12 @@
                 </thead>
                 <tbody>
 
-                    <?php foreach($roles as $role) : ?>
+                    <?php foreach($kategoris as $kategori) : ?>
                     <tr>
-                        <td scope="row"><?php echo $role['nama_role'] ?></td>
+                        <td scope="row"><?php echo $kategori['nama_kategori'] ?></td>
                         <td width="180">
-                            <a href="<?php echo base_url('?pagename=admin-roles-edit&id=' . $role['id_role']) ?>" class="btn btn-warning">Edit</a>
-                            <a href="<?php echo base_url('?pagename=admin-roles-delete&id=' . $role['id_role']) ?>" class="btn btn-danger">Hapus</a>
+                            <a href="<?php echo base_url('?pagename=admin-kategori-edit&id=' . $kategori['id_kategori']) ?>" class="btn btn-warning">Edit</a>
+                            <a href="<?php echo base_url('?pagename=admin-kategori-delete&id=' . $kategori['id_kategori']) ?>" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
 
