@@ -3,7 +3,7 @@
         <div class="col-12">
             <div class="d-flex justify-content-between">
                 <div>
-                    <a href="<?php echo base_url('?pagename=admin-user-add') ?>" class="btn btn-primary mb-3">Tambah Data</a>
+                    <a href="<?php echo base_url('?pagename=admin-user-add') ?>" class="btn btn-primary mb-3">Tambah Users</a>
                 </div>
                 <div></div>
             </div>
@@ -23,7 +23,7 @@
                         <td scope="row"><?php echo $user['nama_lengkap'] ?></td>
                         <td><?php echo $user['user_name'] ?></td>
                         <td><?php echo $user['user_mail'] ?></td>
-                        <td>
+                        <td width="180">
                             <a href="<?php echo base_url('?pagename=admin-user-edit&id=' . $user['id_user']) ?>" class="btn btn-warning">Edit</a>
                             <a href="<?php echo base_url('?pagename=admin-user-delete&id=' . $user['id_user']) ?>" class="btn btn-danger">Hapus</a>
                         </td>

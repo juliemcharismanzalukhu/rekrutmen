@@ -33,4 +33,11 @@ $this->add('admin-loker-update', 'LokersAdminController@update');
 $this->add('admin-loker-delete', 'LokersAdminController@delete');
 $this->add('admin-loker-edit', 'LokersAdminController@show');
 
+$this->add('admin-jenjangs', 'JenjangsAdminController@index');
+$this->add('admin-jenjang-add', 'JenjangsAdminController@add');
+$this->add('admin-jenjang-store', 'JenjangsAdminController@store');
+$this->add('admin-jenjang-update', 'JenjangsAdminController@update');
+$this->add('admin-jenjang-delete', 'JenjangsAdminController@delete');
+$this->add('admin-jenjang-edit', 'JenjangsAdminController@show');
+
 

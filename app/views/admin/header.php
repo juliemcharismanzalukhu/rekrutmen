@@ -32,6 +32,7 @@
                             <a class="dropdown-item" href="<?php echo base_url("?pagename=admin-lokers") ?>">Lihat Data</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo base_url("?pagename=admin-kategoris"); ?>">Kategori</a>
+                            <a class="dropdown-item" href="<?php echo base_url("?pagename=admin-jenjangs"); ?>">Jenjang</a>
                         </div>
                     </li>
                 </ul>

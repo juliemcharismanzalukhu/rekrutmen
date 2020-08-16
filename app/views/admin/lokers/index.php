@@ -3,29 +3,31 @@
         <div class="col-12">
             <div class="d-flex justify-content-between">
                 <div>
-                    <a href="<?php echo base_url('?pagename=admin-user-add') ?>" class="btn btn-primary mb-3">Tambah Data</a>
+                    <a href="<?php echo base_url('?pagename=admin-loker-add') ?>" class="btn btn-primary mb-3">Tambah Lowongan</a>
                 </div>
                 <div></div>
             </div>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Nama Lengkap</th>
-                        <th>Username</th>
-                        <th>Email</th>
+                        <th>Nama </th>
+                        <th>Deskripsi</th>
+                        <th>Gaji </th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <?php foreach($users as $user) : ?>
+                    <?php foreach($lokers as $loker) : ?>
                     <tr>
-                        <td scope="row"><?php echo $user['nama_lengkap'] ?></td>
-                        <td><?php echo $user['user_name'] ?></td>
-                        <td><?php echo $user['user_mail'] ?></td>
-                        <td>
-                            <a href="<?php echo base_url('?pagename=admin-user-edit&id=' . $user['id_user']) ?>" class="btn btn-warning">Edit</a>
-                            <a href="<?php echo base_url('?pagename=admin-user-delete&id=' . $user['id_user']) ?>" class="btn btn-danger">Hapus</a>
+                        <td scope="row"><?php echo $loker['nama_loker'] ?></td>
+                        <td><?php echo $loker['deskripsi_loker'] ?></td>
+                        <td><?php echo $loker['gaji_loker'] ?></td>
+                        <td><?php echo $loker['status_loker'] ?></td>
+                        <td width="180">
+                            <a href="<?php echo base_url('?pagename=admin-loker-edit&id=' . $loker['id_loker']) ?>" class="btn btn-warning">Edit</a>
+                            <a href="<?php echo base_url('?pagename=admin-loker-delete&id=' . $loker['id_loker']) ?>" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
 

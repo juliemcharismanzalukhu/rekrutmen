@@ -91,7 +91,7 @@ class Model {
 
         $this->queryStr ="INSERT INTO {$this->table}(" . implode(', ', $keys) . ") VALUES (" . implode(', ', $values_arr) .")";
         
-        //echo $this->queryStr;
+        echo $this->queryStr;
 
         return $this->db->query( $this->queryStr );
     }
