@@ -106,4 +106,10 @@ class LokersAdminController extends Controller {
 
     }
 
+    public function applicant($id) 
+    {
+
+        echo $id;
+    }
+
 }

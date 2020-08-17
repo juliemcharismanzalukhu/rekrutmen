@@ -4,6 +4,13 @@ class Routes
 {
 
     private $routes = [];
+    private $post = [];
+
+    
+    public function __construct()
+    {
+    }
+    
 
     public function run($url) 
     {
@@ -32,7 +39,9 @@ class Routes
 
     public function add($name, $action) {
         $this->routes[$name] = $action;
+        return $this;
     }
+
 
 
 }

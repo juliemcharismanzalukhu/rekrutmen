@@ -25,9 +25,10 @@
                         <td><?php echo $loker['deskripsi_loker'] ?></td>
                         <td><?php echo $loker['gaji_loker'] ?></td>
                         <td><?php echo $loker['status_loker'] ?></td>
-                        <td width="180">
+                        <td width="250">
                             <a href="<?php echo base_url('?pagename=admin-loker-edit&id=' . $loker['id_loker']) ?>" class="btn btn-warning">Edit</a>
                             <a href="<?php echo base_url('?pagename=admin-loker-delete&id=' . $loker['id_loker']) ?>" class="btn btn-danger">Hapus</a>
+                            <a href="<?php echo base_url('?pagename=admin-loker-applicant&id=' . $loker['id_loker']); ?>" class="btn btn-info">Seleksi</a>
                         </td>
                     </tr>
 
