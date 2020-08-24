@@ -3,6 +3,10 @@
 class Sessions
 {
 
+    public function all() 
+    {
+        return $_SESSION;
+    }
 
     public function get($name)
     {
@@ -30,6 +34,17 @@ class Sessions
 
     public function has($name) {
         if(isset($_SESSION[$name])) return true;
+        return false;
+    }
+
+    public function flash($name) {
+
+        if($this->has($name)){
+            $name = $_SESSION[$name]; 
+            unset($_SESSION[$name]);
+            return $name;
+        } 
+
         return false;
     }
 

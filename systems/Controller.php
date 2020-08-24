@@ -23,5 +23,10 @@ class Controller {
         return isset($input[$name]) ? $input[$name] : '';
     }
     
+    public function validate($data) {
+
+        
+
+    }
 
 }

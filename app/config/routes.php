@@ -45,8 +45,10 @@ $this->add('admin-jenjang-edit', 'JenjangsAdminController@show');
 
 
 //Login & Register 
-$this->add('login', 'AuthController@login');
+$this->add('login', 'AuthController@login' );
 $this->add('register', 'AuthController@register');
+$this->add('register-user', 'AuthController@registerUser');
 $this->add('auth', 'AuthController@auth');
+
 
 
