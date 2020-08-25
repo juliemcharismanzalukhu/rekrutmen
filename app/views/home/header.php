@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/main.css') ?>">
     </head>
     <body>
-
+    
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="<?php echo base_url('') ?>">Cari Loker</a>
             
         
             <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0 align-items-center">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0 ">
                     <li class="nav-item active">
                         <a class="nav-link" href="<?php echo base_url('?pagename=') ?>">Beranda <span class="sr-only">(current)</span></a>
                     </li>
@@ -28,10 +28,11 @@
 
                     
                     <li class="nav-item mr-2">
-                        <a class="nav-link rounded-0 btn btn-lg btn-warning text-dark" href="<?php echo base_url('?pagename=register'); ?>">Registrasi</a>
+                        <a class="rounded-0 btn btn-lg btn-warning text-dark mb-2" href="<?php echo base_url('?pagename=register'); ?>">Registrasi</a>
                     </li>
+
                     <li class="nav-item mr-2">
-                        <a class="nav-link rounded-0 btn btn-lg btn-primary text-white" href="<?php echo base_url('?pagename=login'); ?>">Login</a>
+                        <a class="rounded-0 btn btn-lg btn-primary text-white mb-2" href="<?php echo base_url('?pagename=login'); ?>">Login</a>
                     </li>
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -42,10 +43,12 @@
                     </li> -->
                 </ul>
             </div>
+
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
 
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        
     </nav>
