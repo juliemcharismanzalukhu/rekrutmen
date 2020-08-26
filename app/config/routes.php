@@ -5,6 +5,7 @@ $this->add('', 'FrontendController@index');
 $this->add('login', 'FrontendController@login');
 $this->add('register', 'FrontendController@register');
 $this->add('cari-loker', 'FrontendController@cariLoker');
+$this->add('info-loker', 'FrontendController@infoLoker');
 
 
 $this->add('admin-user', 'UsersAdminController@index');
@@ -49,6 +50,7 @@ $this->add('login', 'AuthController@login' );
 $this->add('register', 'AuthController@register');
 $this->add('register-user', 'AuthController@registerUser');
 $this->add('auth', 'AuthController@auth');
+
 
 
 
