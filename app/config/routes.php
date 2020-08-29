@@ -51,6 +51,8 @@ $this->add('register', 'AuthController@register');
 $this->add('register-user', 'AuthController@registerUser');
 $this->add('auth', 'AuthController@auth');
 
-
+// Users Dashboard
+$this->add('user-dashboard', 'FrontendController@userDashboard');
+$this->add('user-resume', 'FrontendController@userResume');
 
 

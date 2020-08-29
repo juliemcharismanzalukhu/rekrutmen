@@ -9,12 +9,12 @@
 
                     <div class="form-group">
                         <label for="i-email">Email</label>
-                        <input name="email" type="email" class="form-control form-control-lg rounded-0" id="i-email">
+                        <input name="user_name" type="text" class="form-control form-control-lg rounded-0" id="i-email">
                     </div>
 
                     <div class="form-group">
                         <label for="i-password">Password</label>
-                        <input name="password" type="password" class="form-control form-control-lg rounded-0" id="i-password">
+                        <input name="user_pass" type="password" class="form-control form-control-lg rounded-0" id="i-password">
                     </div>
 
                     <button class="btn btn-primary rounded-0 btn-lg">Login</button>
