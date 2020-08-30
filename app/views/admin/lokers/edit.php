@@ -12,6 +12,7 @@ $gaji_loker = isset($edit['gaji_loker']) ? $edit['gaji_loker'] : false;
 $level_loker = isset($edit['level_loker']) ? $edit['level_loker'] : false;
 $jenis_loker = isset($edit['jenis_loker']) ? $edit['jenis_loker'] : false;
 $due_date_loker = isset($edit['due_date_loker']) ? $edit['due_date_loker'] : false;
+$date_loker = isset($edit['date_loker']) ? $edit['date_loker'] : false;
 
 
 ?>
@@ -82,7 +83,11 @@ $due_date_loker = isset($edit['due_date_loker']) ? $edit['due_date_loker'] : fal
                             <label for="i-level_loker">Level Loker</label>
                             <input name="level_loker" type="text" class="form-control" id="i-level_loker" value="<?php echo $level_loker ?>">
                         </div>
-
+                        
+                        <div class="form-group">
+                            <label for="i-date_loker">Tanggal Publish</label>
+                            <input name="date_loker" type="date" class="form-control" id="i-date_loker" value="<?php echo $date_loker ?>">
+                        </div>
                         
 
                         <div class="form-group">
@@ -98,3 +103,18 @@ $due_date_loker = isset($edit['due_date_loker']) ? $edit['due_date_loker'] : fal
         </div>
     </div>
 </div>
+
+<?php $this->section('footer_script'); ?>
+
+    <script src="<?php echo base_url('assets/plugins/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#i-deskripsi_loker',
+            plugins: 'lists',
+            toolbar: 'numlist bullist'
+        });
+
+    </script>
+
+<?php $this->endSection(); ?>

@@ -47,7 +47,10 @@ class LokersAdminController extends Controller {
             'jenis_loker'       => $this->request('jenis_loker'),
             'level_loker'       => $this->request('level_loker'),
             'due_date_loker'    => $this->request('due_date_loker'),
+            'date_loker'          => $this->request('date_loker'),
         ];
+
+
 
         (($model->insert($data)));
 
@@ -68,7 +71,16 @@ class LokersAdminController extends Controller {
             'jenis_loker'       => $this->request('jenis_loker'),
             'level_loker'       => $this->request('level_loker'),
             'due_date_loker'    => $this->request('due_date_loker'),
+            'date_loker'          => $this->request('date_loker'),
         ];
+
+        // echo "<pre>";
+
+        // var_dump($data);
+
+        // echo "</pre>";
+
+        // die();
 
         $model = new LokersModel();
 

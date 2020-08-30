@@ -20,7 +20,7 @@ body {
 
 .form-control {
     border-radius: 0;
-    border: 0px solid transparent;
+    /* border: 0px solid transparent; */
 }
 
 .footer-menu {

@@ -38,11 +38,10 @@ class Sessions
     }
 
     public function flash($name) {
-
         if($this->has($name)){
-            $name = $_SESSION[$name]; 
+            $value = $_SESSION[$name]; 
             unset($_SESSION[$name]);
-            return $name;
+            return $value;
         } 
 
         return false;
