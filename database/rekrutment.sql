@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `loker` (
   `gaji_loker` varchar(100) NOT NULL DEFAULT '0',
   `jenis_loker` varchar(50) NOT NULL DEFAULT '',
   `level_loker` varchar(100) NOT NULL DEFAULT '',
+  `date_loker` date NOT NULL,
   `due_date_loker` date NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id_loker`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -59,8 +60,8 @@ CREATE TABLE IF NOT EXISTS `loker` (
 -- Dumping data for table rekrutmen.loker: ~0 rows (approximately)
 DELETE FROM `loker`;
 /*!40000 ALTER TABLE `loker` DISABLE KEYS */;
-INSERT INTO `loker` (`id_loker`, `id_kategori`, `jenjang_loker`, `nama_loker`, `deskripsi_loker`, `status_loker`, `gaji_loker`, `jenis_loker`, `level_loker`, `due_date_loker`) VALUES
-	(1, 1, 2, 'wow', 'wow', 'Draft', 'Rp. 8.000.000/Bulan', 'Full Time', 'Manager Admin', '2020-09-05');
+INSERT INTO `loker` (`id_loker`, `id_kategori`, `jenjang_loker`, `nama_loker`, `deskripsi_loker`, `status_loker`, `gaji_loker`, `jenis_loker`, `level_loker`, `date_loker`, `due_date_loker`) VALUES
+	(1, 1, 2, 'Operator Forklift', '<ul>\r\n<li>handling penarikan barang dari Warehouse station ke warehouse station menggunakan forklift inbound process dari Warehouse fulfillment to Warehouse Logistics</li>\r\n<li>Menjaga dan memelihara forklift yang dioperasikan</li>\r\n</ul>', 'Draft', 'Rp. 8.000.000/Bulan', 'Full Time', 'Manager Admin', '2020-08-30', '2020-09-05');
 /*!40000 ALTER TABLE `loker` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.perusahaan
@@ -93,6 +94,17 @@ INSERT INTO `roles` (`id_role`, `nama_role`) VALUES
 	(3, 'Employer');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
+-- Dumping structure for table rekrutmen.telah_dilamar
+CREATE TABLE IF NOT EXISTS `telah_dilamar` (
+  `id_loker` bigint(20) DEFAULT 0,
+  `id_user` bigint(20) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table rekrutmen.telah_dilamar: ~0 rows (approximately)
+DELETE FROM `telah_dilamar`;
+/*!40000 ALTER TABLE `telah_dilamar` DISABLE KEYS */;
+/*!40000 ALTER TABLE `telah_dilamar` ENABLE KEYS */;
+
 -- Dumping structure for table rekrutmen.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id_user` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -101,16 +113,43 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_name` varchar(150) DEFAULT '',
   `user_pass` varchar(32) DEFAULT '',
   `user_mail` varchar(150) DEFAULT '',
+  `user_profile` text DEFAULT NULL,
+  `user_linkedin` text DEFAULT NULL,
+  `user_facebook` text DEFAULT NULL,
+  `user_twitter` text DEFAULT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table rekrutmen.users: ~2 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id_user`, `id_role`, `nama_lengkap`, `user_name`, `user_pass`, `user_mail`) VALUES
-	(3, 0, 'data baru', 'databaru', 'd41d8cd98f00b204e9800998ecf8427e', 'databaru@gmail.com'),
-	(4, 0, 'datalamas', 'datalamas', 'd41d8cd98f00b204e9800998ecf8427e', 'datalamas@gmail.com');
+INSERT INTO `users` (`id_user`, `id_role`, `nama_lengkap`, `user_name`, `user_pass`, `user_mail`, `user_profile`, `user_linkedin`, `user_facebook`, `user_twitter`) VALUES
+	(3, 1, 'Bambang', 'databaru', '3847820138564525205299f1f444c5ec', 'databaru@gmail.com', NULL, 'https://www.linkedin.com/sumber-daya', 'https://www.facebook.com/sumber-daya', 'https://www.twitter.com/sumber-daya'),
+	(4, 1, 'datalamas', 'datalamas', 'd41d8cd98f00b204e9800998ecf8427e', 'datalamas@gmail.com', NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Dumping structure for table rekrutmen.users_karyawan
+CREATE TABLE IF NOT EXISTS `users_karyawan` (
+  `id_user` int(11) DEFAULT 0,
+  `ringkasan_profile` text DEFAULT NULL,
+  `jk` varchar(15) DEFAULT '',
+  `tahun_lahir` int(4) DEFAULT 0,
+  `status_perkawinan` varchar(30) DEFAULT '',
+  `alamat` text DEFAULT NULL,
+  `telepon` varchar(20) DEFAULT '',
+  `riwayat_pendidikan` text DEFAULT NULL,
+  `keahlian` text DEFAULT NULL,
+  `lama_bekerja` varchar(75) DEFAULT '',
+  `pengalaman_bekerja` text DEFAULT NULL,
+  `pendidikan_terakhir` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table rekrutmen.users_karyawan: ~1 rows (approximately)
+DELETE FROM `users_karyawan`;
+/*!40000 ALTER TABLE `users_karyawan` DISABLE KEYS */;
+INSERT INTO `users_karyawan` (`id_user`, `ringkasan_profile`, `jk`, `tahun_lahir`, `status_perkawinan`, `alamat`, `telepon`, `riwayat_pendidikan`, `keahlian`, `lama_bekerja`, `pengalaman_bekerja`, `pendidikan_terakhir`) VALUES
+	(3, '<p>wew</p>', 'Laki-Laki', 1932, 'Belum Menikah', '<p>wew</p>', '087867894423', '<p>wew</p>', '<p>wew</p>', '1 - 2 Tahun', '<p>wewweerere</p>', 'Master / S2');
+/*!40000 ALTER TABLE `users_karyawan` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.user_meta
 CREATE TABLE IF NOT EXISTS `user_meta` (
