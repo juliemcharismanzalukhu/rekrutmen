@@ -2,14 +2,9 @@
 
 class Validator {
 
-    private $rules = [];
+    private $rules  = [];
     private $errors = [];
-    private $data = [];
-
-    public function index() {
-
-
-    }
+    private $data   = [];
 
     public function setData($data) {
         $this->data = $data;

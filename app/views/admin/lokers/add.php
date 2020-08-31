@@ -16,13 +16,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">Nama Lowongan</label>
-                            <input type="text" name="nama_loker" class="form-control">
+                            <label for="i-nama_loker">Nama Lowongan</label>
+                            <input type="text" name="nama_loker" id="i-nama_loker" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label for="">Deskripsi Lowongan</label>
-                            <textarea name="deskripsi_loker" id="" ows="5" class="form-control"></textarea>
+                            <label for="i-deskripsi_loker">Deskripsi Lowongan</label>
+                            <textarea name="deskripsi_loker" id="i-deskripsi_loker" ows="5" class="form-control"></textarea>
                         </div>
 
                         
@@ -66,7 +66,10 @@
                             <input name="level_loker" type="text" class="form-control" id="i-level_loker">
                         </div>
 
-                        
+                        <div class="form-group">
+                            <label for="i-date_loker">Tanggal Publish</label>
+                            <input name="date_loker" type="date" class="form-control" id="i-date_loker">
+                        </div>
 
                         <div class="form-group">
                             <label for="i-due_date_loker">Tanggal Berakhir Lowongan</label>
@@ -81,3 +84,17 @@
         </div>
     </div>
 </div>
+
+
+<?php $this->section('footer_script'); ?>
+
+    <script src="<?php echo base_url('assets/plugins/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#i-deskripsi_loker',
+        });
+
+    </script>
+
+<?php $this->endSection(); ?>

@@ -54,5 +54,9 @@ $this->add('auth', 'AuthController@auth');
 // Users Dashboard
 $this->add('user-dashboard', 'FrontendController@userDashboard');
 $this->add('user-resume', 'FrontendController@userResume');
+$this->add('user-pengaturan', 'FrontendController@userPengaturan');
+
+$this->add('update-user-resume', 'FrontendController@updateUserResume');
+$this->add('update-user-pengaturan', 'FrontendController@updateUserPengaturan');
 
 

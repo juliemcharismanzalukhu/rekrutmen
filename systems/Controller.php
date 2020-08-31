@@ -1,7 +1,10 @@
 <?php 
 
 class Controller {
- 
+    
+    public function view() {
+        return new View();
+    }
 
     public function request($name = '') {
         
