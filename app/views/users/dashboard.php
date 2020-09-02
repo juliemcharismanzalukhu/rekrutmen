@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-12 col-md-9">
-
+                <p><a href="<?php echo base_url("?pagename=user-resume-pdf") ?>">Resume PDF</a> : Download Resume</p>
                 <p><a href="<?php echo base_url("?pagename=user-lamaran") ?>">Lamaran</a> : Cek status lamaran yang telah dikirim</p>
                 <p><a href="<?php echo base_url("?pagename=user-resume") ?>">Resume</a> : Buat Resume anda sendiri</p>
 

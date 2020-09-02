@@ -7,9 +7,10 @@
 
             <h1 class="text-center mb-3 text-white font-weight-bold">Cari lowongan Kerja</h1> 
             <form action="">
+                <input type="hidden" name="pagename" value="cari-loker">
                 <div class="row d-flex align-items-center">
                     <div class="col-9 col-md-10 p-0">
-                        <input type="text" class="form-control form-control-lg" placeholder="Masukan Posisi yang ingin anda cari">
+                        <input type="text" class="form-control form-control-lg" name="search" placeholder="Cari Loker">
                     </div>
                     <div class="col-3 col-md-2 p-0">
                         <button class="btn btn-lg btn-warning btn-block rounded-0">Cari</button>
@@ -32,7 +33,7 @@
             <div class="col-12 col-md-6 text-center">
                 <h3>Pencari Kerja</h3>
                 <p>Buat resume gratis, untuk peroleh peluang kerja lebih baik sesuai dengan keahlian dan lokasi.</p>
-                <a href="javascript:void(0)" class="btn btn-lg btn-primary rounded-0">RESUME ONLINE</a>
+                <a href="<?php echo base_url("?pagename=user-resume") ?>" class="btn btn-lg btn-primary rounded-0">RESUME ONLINE</a>
             </div>
             <div class="col-12 col-md-3"></div>
         </div>

@@ -1,6 +1,8 @@
 <?php 
 
 model('LokersModel');
+model('TelahDilamar');
+
 
 class FrontendController extends Controller 
 {
@@ -46,6 +48,26 @@ class FrontendController extends Controller
 
         view('home/header');
         view('users/settings');
+        view('home/footer');
+
+    }
+
+    public function userLamaranKerja()
+    {
+
+
+        view('home/header');
+        view('users/lamaran-kerja');
+        view('home/footer');
+
+    }
+
+    public function userBantuan()
+    {
+
+
+        view('home/header');
+        view('users/bantuan');
         view('home/footer');
 
     }
@@ -232,7 +254,7 @@ class FrontendController extends Controller
 
         if(!session()->get('is_login')) Redirect::to(base_url());
         
-        $lokersModel = new LokersModel();
+        $telahDilamar = new TelahDilamar();
         $user = session()->get('user');
         $id_loker = $this->request('id_loker');
 
@@ -242,10 +264,20 @@ class FrontendController extends Controller
         ];
 
 
-        $lokersModel->insert($data);
+        $telahDilamar->insert($data);
 
 
         Redirect::with('message', 'Berhasil Melamar')->to(base_url('?pagename=info-loker&id=' . $id_loker));
+
+
+    }
+
+    public function userResumePdf() 
+    {
+
+        require_once 'app/third_party/dompdf/autoload.inc.php';
+
+        view('users/resume-pdf');
 
 
     }
