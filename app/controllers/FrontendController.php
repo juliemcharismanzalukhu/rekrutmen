@@ -1,5 +1,6 @@
 <?php 
 
+model('LokersModel');
 
 class FrontendController extends Controller 
 {
@@ -226,5 +227,27 @@ class FrontendController extends Controller
         Redirect::with('message', 'Berhasil di perbaharui')->to(base_url('?pagename=user-pengaturan'));
     }
 
+    function lamarPekerjaan()
+    {
+
+        if(!session()->get('is_login')) Redirect::to(base_url());
+        
+        $lokersModel = new LokersModel();
+        $user = session()->get('user');
+        $id_loker = $this->request('id_loker');
+
+        $data = [
+            'id_user' => $user['id_user'],
+            'id_loker' => $id_loker
+        ];
+
+
+        $lokersModel->insert($data);
+
+
+        Redirect::with('message', 'Berhasil Melamar')->to(base_url('?pagename=info-loker&id=' . $id_loker));
+
+
+    }
 
 }

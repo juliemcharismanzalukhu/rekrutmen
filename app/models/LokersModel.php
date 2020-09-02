@@ -6,4 +6,5 @@ class LokersModel extends Model {
     
     public $primaryKey = "id_loker";
 
+
 }

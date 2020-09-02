@@ -28,11 +28,11 @@
 
                     
                     <li class="nav-item mr-2">
-                        <a class="rounded-0 btn btn-lg btn-warning text-dark mb-2" href="<?php echo base_url('?pagename=register'); ?>">Registrasi</a>
+                        <a class="rounded-0 btn btn-warning text-dark mb-2" href="<?php echo base_url('?pagename=register'); ?>">Registrasi</a>
                     </li>
 
                     <li class="nav-item mr-2">
-                        <a class="rounded-0 btn btn-lg btn-primary text-white mb-2" href="<?php echo base_url('?pagename=login'); ?>">Login</a>
+                        <a class="rounded-0 btn btn-primary text-white mb-2" href="<?php echo base_url('?pagename=login'); ?>">Login</a>
                     </li>
                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
