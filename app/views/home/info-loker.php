@@ -1,6 +1,7 @@
 <?php 
 
 
+
     $id_loker = isset($_GET['id']) ? $_GET['id'] : false;
 
     $db = Database::connect();

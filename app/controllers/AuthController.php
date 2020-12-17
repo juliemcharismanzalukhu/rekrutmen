@@ -33,12 +33,13 @@ class AuthController extends Controller
             Redirect::with('error', 'Email sudah digunakan')
                 ->to(base_url('?pagename=register'));
 
+
         }
 
 
         $data = [
             'user_mail' => $this->request('email'),
-            'user_pass' => $this->request('user_pass'),
+            'user_pass' => $this->request('password'),
             'id_role'   => 3
         ];
 
@@ -114,11 +115,12 @@ class AuthController extends Controller
             JOIN roles ON users.id_role = roles.id_role 
             WHERE users.user_name = '{$username}'
             AND users.user_pass = '{$password}'
-            AND users.id_role = 1
         
         ";
 
         $query = $db->query($queryStr);
+
+     
 
         if($query->num_rows > 0)
         {
@@ -126,7 +128,9 @@ class AuthController extends Controller
             
             $data = $query->fetch_array();
 
-            if($data['user_pass'] != $password)
+
+
+            if($data['user_pass'] != $password || !in_array( $data['nama_role'], [ 'Administrator', 'HCE']))
             {
 
                 Redirect::with('message', 'Username/Password tidak sesuai 1')

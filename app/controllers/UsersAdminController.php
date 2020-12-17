@@ -5,13 +5,25 @@ model('RolesModel');
 
 class UsersAdminController extends Controller {
 
+
+    public function __construct() {
+        if( !isset($_SESSION['is_login']))
+        {
+            Redirect::to(base_url('?pagename=admin-login'));
+        }
+    }
+
     public function index() {
 
-        $model = new UsersModel();
+        $db = Database::connect();
+
+        $queryStr = "SELECT * FROM users LEFT JOIN roles ON users.id_role = roles.id_role";
+
+        $query = $db->query( $queryStr );
 
         view('admin/header');
         view('admin/users/index', [
-            'users' => $model->paginate(10)
+            'users' => $query->fetch_all(MYSQLI_ASSOC)
         ]);
         view('admin/footer');
     }
@@ -35,11 +47,17 @@ class UsersAdminController extends Controller {
         $model = new UsersModel();
         
         $data = [
+            'id_role'       => $this->request('id_role'),
             'nama_lengkap'  => $this->request('nama_lengkap'),
             'user_name'     => $this->request('user_name'),
             'user_pass'     => md5($this->request('user_pass')),
             'user_mail'     => $this->request('user_mail')
         ];
+
+        if( $this->request('password') ) 
+        {
+            $data['user_pass'] = md5( $this->request('password') );
+        }
 
         $model->insert($data);
 
@@ -51,10 +69,17 @@ class UsersAdminController extends Controller {
     {
 
         $data = [
+            'id_role'       => $this->request('id_role'),
             'nama_lengkap'  => $this->request('nama_lengkap'),
             'user_name'     => $this->request('user_name'),
             'user_mail'     => $this->request('user_mail')
         ];
+
+
+        if( $this->request('password') ) 
+        {
+            $data['user_pass'] = md5( $this->request('password') );
+        }
 
         $model = new UsersModel();
 
@@ -68,11 +93,13 @@ class UsersAdminController extends Controller {
     {
 
         $model = new UsersModel();
+        $roles = new RolesModel();
 
         view('admin/header');
         
         view('admin/users/edit', [
-            'edit' => $model->find($id)->get()
+            'edit' => $model->find($id)->get(),
+            'roles' => $roles->findAll()
         ]);
         
         view('admin/footer');

@@ -3,6 +3,13 @@
 class DashboardController extends Controller
 {
 
+    public function __construct() {
+        if( !isset($_SESSION['is_login']))
+        {
+            Redirect::to(base_url('?pagename=admin-login'));
+        }
+    }
+    
     public function index() 
     {
 
