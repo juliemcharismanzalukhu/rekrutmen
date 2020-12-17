@@ -83,28 +83,31 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `id_role` bigint(20) NOT NULL AUTO_INCREMENT,
   `nama_role` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table rekrutmen.roles: ~2 rows (approximately)
 DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id_role`, `nama_role`) VALUES
 	(1, 'Administrator'),
-	(3, 'Employer');
+	(3, 'Employer'),
+	(4, 'HCE');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.telah_dilamar
 CREATE TABLE IF NOT EXISTS `telah_dilamar` (
   `id_loker` bigint(20) DEFAULT 0,
   `id_user` bigint(20) DEFAULT 0,
-  `tanggal_lamar` date DEFAULT NULL
+  `tanggal_lamar` date DEFAULT NULL,
+  `status` enum('PENDING','REJECTED','ACCEPTED','INVITE TO INTERVIEW') DEFAULT 'PENDING'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table rekrutmen.telah_dilamar: ~1 rows (approximately)
+-- Dumping data for table rekrutmen.telah_dilamar: ~2 rows (approximately)
 DELETE FROM `telah_dilamar`;
 /*!40000 ALTER TABLE `telah_dilamar` DISABLE KEYS */;
-INSERT INTO `telah_dilamar` (`id_loker`, `id_user`, `tanggal_lamar`) VALUES
-	(1, 3, '2020-09-02');
+INSERT INTO `telah_dilamar` (`id_loker`, `id_user`, `tanggal_lamar`, `status`) VALUES
+	(1, 3, '2020-09-02', 'REJECTED'),
+	(1, 4, '2020-12-17', 'INVITE TO INTERVIEW');
 /*!40000 ALTER TABLE `telah_dilamar` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.users
@@ -120,14 +123,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_facebook` text DEFAULT NULL,
   `user_twitter` text DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table rekrutmen.users: ~2 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id_user`, `id_role`, `nama_lengkap`, `user_name`, `user_pass`, `user_mail`, `user_profile`, `user_linkedin`, `user_facebook`, `user_twitter`) VALUES
 	(3, 3, 'Bambang', 'databaru', '1dfe4174a77e7b231bc2203e589fd36f', 'databaru@gmail.com', NULL, 'https://www.linkedin.com/sumber-daya', 'https://www.facebook.com/sumber-daya', 'https://www.twitter.com/sumber-daya'),
-	(4, 1, 'datalamas', 'datalamas', '1dfe4174a77e7b231bc2203e589fd36f', 'datalamas@gmail.com', NULL, NULL, NULL, NULL);
+	(4, 1, 'Bagas Topati', 'datalamas', '1dfe4174a77e7b231bc2203e589fd36f', 'datalamas@gmail.com', 'belajar4.PNG', '', 'bgas.kurosaki', ''),
+	(7, 4, 'HCE', 'HCE', 'c315c38e295e8d86943867b1edddf691', 'hce@gmail.com', NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.users_files
@@ -136,14 +140,15 @@ CREATE TABLE IF NOT EXISTS `users_files` (
   `id_user` bigint(20) NOT NULL DEFAULT 0,
   `lokasi_file` text DEFAULT NULL,
   PRIMARY KEY (`id_file`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Dumping data for table rekrutmen.users_files: ~0 rows (approximately)
+-- Dumping data for table rekrutmen.users_files: ~3 rows (approximately)
 DELETE FROM `users_files`;
 /*!40000 ALTER TABLE `users_files` DISABLE KEYS */;
 INSERT INTO `users_files` (`id_file`, `id_user`, `lokasi_file`) VALUES
 	(2, 3, 'screencapture-batubaramart-2020-10-06-13_07_10.pdf'),
-	(7, 3, 'KHS_RESTU ZEBUA.pdf');
+	(7, 3, 'KHS_RESTU ZEBUA.pdf'),
+	(8, 4, 'belajar4.PNG');
 /*!40000 ALTER TABLE `users_files` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.users_karyawan
@@ -162,11 +167,12 @@ CREATE TABLE IF NOT EXISTS `users_karyawan` (
   `pendidikan_terakhir` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table rekrutmen.users_karyawan: ~0 rows (approximately)
+-- Dumping data for table rekrutmen.users_karyawan: ~1 rows (approximately)
 DELETE FROM `users_karyawan`;
 /*!40000 ALTER TABLE `users_karyawan` DISABLE KEYS */;
 INSERT INTO `users_karyawan` (`id_user`, `ringkasan_profile`, `jk`, `tahun_lahir`, `status_perkawinan`, `alamat`, `telepon`, `riwayat_pendidikan`, `keahlian`, `lama_bekerja`, `pengalaman_bekerja`, `pendidikan_terakhir`) VALUES
-	(3, '<p>wew</p>', 'Laki-Laki', 1932, 'Belum Menikah', '<p>wew</p>', '087867894423', '<p>wew</p>', '<p>wew</p>', '1 - 2 Tahun', '<p>wewweerere</p>', 'Master / S2');
+	(3, '<p>wew</p>', 'Laki-Laki', 1932, 'Belum Menikah', '<p>wew</p>', '087867894423', '<p>wew</p>', '<p>wew</p>', '1 - 2 Tahun', '<p>wewweerere</p>', 'Master / S2'),
+	(4, '<p>saya adalah seorang</p>', 'Laki-Laki', 2005, 'Belum Menikah', '<p>JL. ILENG</p>', '087867894423', '<p>SAYA SMK DI&nbsp;&nbsp;</p>', '<p>REKAYASA PERANGKAT LUNAK</p>', 'Kurang Dari 1 Tahun', '<p>SAYA PERNAH BERKERJA DI PT. XXX</p>', 'Diploma/D1/D2/D3');
 /*!40000 ALTER TABLE `users_karyawan` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.user_meta
