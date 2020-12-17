@@ -13,6 +13,7 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Tanggal</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,10 +33,19 @@
                             ?>
 
                             <?php while($data = $query->fetch_array()) : ?>
+                                <?php 
+                                
+                                $label_class = '';
+                                if( $data['status'] == 'REJECTED' ) $label_class = 'text-danger';
+                                elseif( $data['status'] == 'ACCEPTED') $label_class = 'text-success';
+                                elseif( $data['status'] == 'INVITE TO INTERVIEW') $label_class = 'text-info';
+                                elseif( $data['status'] == 'PENDING') $label_class = 'text-warning';
 
+                                ?>
                                 <tr>
                                     <td><a href="<?php echo base_url("?pagename=info-loker&id=" . $data['id_loker']) ?>"><?php echo $data['nama_loker'] ?></a></td>
                                     <td><?php echo $data['tanggal_lamar']; ?></td>
+                                    <td><span class="<?php echo $label_class; ?>"><?php echo $data['status']; ?><span></td>
                                 </tr>
 
                             <?php endwhile; ?>

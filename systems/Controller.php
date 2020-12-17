@@ -25,6 +25,12 @@ class Controller {
 
         return isset($input[$name]) ? $input[$name] : '';
     }
+
+    public function getFile( $name ) {
+        return isset($_FILES[$name]) ? $_FILES[$name] : false;
+    }
+
+
     
     public function validate($data) {
 

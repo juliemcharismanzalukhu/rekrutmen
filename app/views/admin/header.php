@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Administrator</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,12 +13,12 @@
       
       <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Administrator Page</a>
             
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<?php echo base_url('?pagename=admin-dashboard') ?>">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url('?pagename=admin-user'); ?>">Users</a>
@@ -34,6 +34,9 @@
                             <a class="dropdown-item" href="<?php echo base_url("?pagename=admin-kategoris"); ?>">Kategori</a>
                             <a class="dropdown-item" href="<?php echo base_url("?pagename=admin-jenjangs"); ?>">Jenjang</a>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url('?pagename=admin-logout'); ?>">Logout</a>
                     </li>
                 </ul>
                 

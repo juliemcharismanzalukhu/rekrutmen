@@ -21,10 +21,9 @@ class AuthController extends Controller
     public function registerUser() 
     {
 
-        var_dump($_POST);
 
-        $email = $this->request('email');
-        $pass = $this->request('password');
+        $email  = $this->request('email');
+        $pass   = $this->request('password');
 
         $db = Database::connect();
 
@@ -39,7 +38,8 @@ class AuthController extends Controller
 
         $data = [
             'user_mail' => $this->request('email'),
-            'user_pass' => $this->request('user_pass')
+            'user_pass' => $this->request('user_pass'),
+            'id_role'   => 3
         ];
 
  
@@ -91,5 +91,59 @@ class AuthController extends Controller
 
     }
 
+
+    public function adminLogin()
+    {
+        //echo md5('databaru');
+        view('admin/login');
+
+    }
+
+    public function adminLoginCheck()
+    {
+
+
+        $username = $this->request('username');
+        $password = md5($this->request('password'));
+
+        $db = Database::connect();
+
+        $queryStr = "
+
+            SELECT * FROM users 
+            JOIN roles ON users.id_role = roles.id_role 
+            WHERE users.user_name = '{$username}'
+            AND users.user_pass = '{$password}'
+            AND users.id_role = 1
+        
+        ";
+
+        $query = $db->query($queryStr);
+
+        if($query->num_rows > 0)
+        {
+
+            
+            $data = $query->fetch_array();
+
+            if($data['user_pass'] != $password)
+            {
+
+                Redirect::with('message', 'Username/Password tidak sesuai 1')
+                    ->to(base_url('?pagename=admin-login'));
+
+            }
+
+
+            $_SESSION['user'] = $data;
+            $_SESSION['is_login'] = 1;
+
+            Redirect::to(base_url('?pagename=admin-dashboard'));
+
+        }
+
+        Redirect::with('message', 'Username/Password tidak sesuai')
+            ->to(base_url('?pagename=admin-login'));
+    }
 
 }

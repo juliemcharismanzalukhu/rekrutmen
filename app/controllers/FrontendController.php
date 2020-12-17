@@ -201,9 +201,7 @@ class FrontendController extends Controller
         $user_facebook  = $this->request('user_facebook');
         $user_pass      = $this->request('user_pass');
         $user_repass    = $this->request('user_repass');
-
-
-
+        $user_profile   = $this->getFile('user_profile');
 
         $queryStr = "
 
@@ -217,6 +215,18 @@ class FrontendController extends Controller
            
 
         ";
+
+
+        if( $user_profile )
+        {
+
+            $move = move_uploaded_file($user_profile['tmp_name'], 'uploads/' . $user_profile['name']);
+
+            if( $move ) $queryStr .= ", user_profile = '{$user_profile['name']}'";
+
+        }
+
+        
 
 
         if(!empty(trim($user_pass)) && !empty(trim($user_repass))) 
@@ -259,8 +269,9 @@ class FrontendController extends Controller
         $id_loker = $this->request('id_loker');
 
         $data = [
-            'id_user' => $user['id_user'],
-            'id_loker' => $id_loker
+            'id_user'       => $user['id_user'],
+            'id_loker'      => $id_loker,
+            'tanggal_lamar' => date('Y-m-d')
         ];
 
 
@@ -281,5 +292,85 @@ class FrontendController extends Controller
 
 
     }
+
+
+
+    private function tryUploadFile( $name ) {
+
+
+        $file = $_FILES[ $name ];
+
+        $path = "uploads";
+
+        if(!empty($file['tmp_name'])) 
+        {
+            
+            $name = $file['name'];
+            $is_upload = move_uploaded_file( $file['tmp_name'], "{$path}/{$name}");
+
+            if( $is_upload ) return $name;
+
+        }
+
+
+        return '';
+
+
+    }
+
+    public function uploadBerkasUsers() {
+
+
+        $db = Database::connect();
+
+        $response = [];
+
+        $file_name = $this->tryUploadFile( 'file' );
+        $id_user = session()->get('user')['id_user'];
+
+        $query_str = "INSERT INTO users_files(id_user, lokasi_file) VALUES ('{$id_user}', '{$file_name}')";
+
+        $insert = $db->query( $query_str );
+
+        if( $insert ) 
+        {
+
+            $response['code'] = 200;
+            $response['message'] = 'Success';
+            $response['data'] = [
+                'id' => $db->insert_id,
+                'name' => $file_name
+            ];
+
+            
+
+        }
+
+        $response['last_query'] = $query_str;
+
+        echo json_encode( $response );
+
+        die();
+
+    }
+
+    public function deleteBerkasUser() {
+
+        
+        $db = Database::connect();
+        $id_user = session()->get( 'user' )[ 'id_user' ];
+        $id_file = $this->request( 'id' );
+        $query_str = "DELETE FROM users_files WHERE id_user='{$id_user}' AND id_file = '{$id_file}'";
+        
+        $db->query( $query_str );
+
+    }
+
+    public function userLogout() {
+
+        session_destroy();
+        header( 'location: ' . base_url(''), 'refresh' );
+    }
+
 
 }

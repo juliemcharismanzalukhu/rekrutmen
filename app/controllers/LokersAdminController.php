@@ -120,8 +120,33 @@ class LokersAdminController extends Controller {
 
     public function applicant($id) 
     {
+        view('admin/header');
+        view('admin/lokers/applicant');
+        view('admin/footer');
+    }
 
-        echo $id;
+    public function applicantPdf() {
+        require_once 'app/third_party/dompdf/autoload.inc.php';
+        view('admin/lokers/applicant-pdf');
+    }
+
+    public function updateApplicant()
+    {
+
+        $id_user = $this->request('id_user');
+        $id_loker = $this->request('id_loker');
+        $status = $this->request('status');
+
+        $db = Database::connect();
+
+        $queryStr= "UPDATE telah_dilamar set status='{$status}' WHERE id_loker='{$id_loker}' AND id_user='{$id_user}'";
+        
+        $db->query( $queryStr );
+
+        
+        Redirect::to(base_url('?pagename=admin-loker-applicant&id=' . $id_loker));
+        
+
     }
 
 }

@@ -47,9 +47,12 @@ class Routes
 
 
     public function add($name, $action, $filters = []) {
-        $this->routes[$name] = $action;
-        $this->filters[$name] = $filters;
+
+        $this->routes[$name]    = $action;
+        $this->filters[$name]   = $filters;
+        
         return $this;
+
     }
 
     public function beforeRoute($pagename)

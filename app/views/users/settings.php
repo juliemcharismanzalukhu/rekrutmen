@@ -53,7 +53,7 @@
 
             <div class="col-12 col-md-9">
 
-                <form action="<?php echo base_url("?pagename=update-user-pengaturan") ?>" method="POST">
+                <form action="<?php echo base_url("?pagename=update-user-pengaturan") ?>" method="POST" enctype="multipart/form-data">
                 
                     <div class="form-group">
 
@@ -93,7 +93,13 @@
 
                         <label for="i-user_profile">Profile</label>
                         <input type="file" name="user_profile" class="form-control" id="i-user_profile" value="">
-                    
+
+                        <?php if( $user_profile ) : ?>
+
+                            <img src="<?php echo base_url('uploads/' . $user_profile ); ?>" class="img-fluid mt-3" style="max-width: 300px">
+
+                        <?php endif; ?>
+
                     </div>
 
 
@@ -113,8 +119,7 @@
                     
                     </div>
 
-            
-                                
+                                     
                     <button class="btn btn-lg btn-primary rounded-0">Simpan Pengaturan</button>
                 </form>
 

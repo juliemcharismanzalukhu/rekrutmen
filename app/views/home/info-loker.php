@@ -66,7 +66,11 @@
                             <input type="hidden" name="id_loker" value="<?php echo $id_loker; ?>">
                             <button class="btn btn-primary rounded-0" name="nama_kerja">Lamar Pekerjaan</button>
                         </form>
+
+                    <?php else: ?>
                     
+                        <button class="btn btn-success rounded-0">Anda sudah memasukkan lamaran</button>
+
                     <?php endif; ?>
                
                 <?php endif; ?>

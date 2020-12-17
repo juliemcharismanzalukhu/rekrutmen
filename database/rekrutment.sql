@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `loker` (
 DELETE FROM `loker`;
 /*!40000 ALTER TABLE `loker` DISABLE KEYS */;
 INSERT INTO `loker` (`id_loker`, `id_kategori`, `jenjang_loker`, `nama_loker`, `deskripsi_loker`, `status_loker`, `gaji_loker`, `jenis_loker`, `level_loker`, `date_loker`, `due_date_loker`) VALUES
-	(1, 1, 2, 'Operator Forklift', '<ul>\r\n<li>handling penarikan barang dari Warehouse station ke warehouse station menggunakan forklift inbound process dari Warehouse fulfillment to Warehouse Logistics</li>\r\n<li>Menjaga dan memelihara forklift yang dioperasikan</li>\r\n</ul>', 'Draft', 'Rp. 8.000.000/Bulan', 'Full Time', 'Manager Admin', '2020-08-30', '2020-09-05');
+	(1, 1, 2, 'Operator Forklift', '<ul>\r\n<li>handling penarikan barang dari Warehouse station ke warehouse station menggunakan forklift inbound process dari Warehouse fulfillment to Warehouse Logistics</li>\r\n<li>Menjaga dan memelihara forklift yang dioperasikan</li>\r\n</ul>', 'Publish', 'Rp. 8.000.000/Bulan', 'Full Time', 'Manager Admin', '2020-08-30', '2020-09-05');
 /*!40000 ALTER TABLE `loker` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.perusahaan
@@ -90,19 +90,21 @@ DELETE FROM `roles`;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id_role`, `nama_role`) VALUES
 	(1, 'Administrator'),
-	(2, 'Applicant'),
 	(3, 'Employer');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.telah_dilamar
 CREATE TABLE IF NOT EXISTS `telah_dilamar` (
   `id_loker` bigint(20) DEFAULT 0,
-  `id_user` bigint(20) DEFAULT 0
+  `id_user` bigint(20) DEFAULT 0,
+  `tanggal_lamar` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table rekrutmen.telah_dilamar: ~0 rows (approximately)
+-- Dumping data for table rekrutmen.telah_dilamar: ~1 rows (approximately)
 DELETE FROM `telah_dilamar`;
 /*!40000 ALTER TABLE `telah_dilamar` DISABLE KEYS */;
+INSERT INTO `telah_dilamar` (`id_loker`, `id_user`, `tanggal_lamar`) VALUES
+	(1, 3, '2020-09-02');
 /*!40000 ALTER TABLE `telah_dilamar` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.users
@@ -124,9 +126,25 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id_user`, `id_role`, `nama_lengkap`, `user_name`, `user_pass`, `user_mail`, `user_profile`, `user_linkedin`, `user_facebook`, `user_twitter`) VALUES
-	(3, 1, 'Bambang', 'databaru', '3847820138564525205299f1f444c5ec', 'databaru@gmail.com', NULL, 'https://www.linkedin.com/sumber-daya', 'https://www.facebook.com/sumber-daya', 'https://www.twitter.com/sumber-daya'),
-	(4, 1, 'datalamas', 'datalamas', 'd41d8cd98f00b204e9800998ecf8427e', 'datalamas@gmail.com', NULL, NULL, NULL, NULL);
+	(3, 3, 'Bambang', 'databaru', '1dfe4174a77e7b231bc2203e589fd36f', 'databaru@gmail.com', NULL, 'https://www.linkedin.com/sumber-daya', 'https://www.facebook.com/sumber-daya', 'https://www.twitter.com/sumber-daya'),
+	(4, 1, 'datalamas', 'datalamas', '1dfe4174a77e7b231bc2203e589fd36f', 'datalamas@gmail.com', NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Dumping structure for table rekrutmen.users_files
+CREATE TABLE IF NOT EXISTS `users_files` (
+  `id_file` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_user` bigint(20) NOT NULL DEFAULT 0,
+  `lokasi_file` text DEFAULT NULL,
+  PRIMARY KEY (`id_file`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table rekrutmen.users_files: ~0 rows (approximately)
+DELETE FROM `users_files`;
+/*!40000 ALTER TABLE `users_files` DISABLE KEYS */;
+INSERT INTO `users_files` (`id_file`, `id_user`, `lokasi_file`) VALUES
+	(2, 3, 'screencapture-batubaramart-2020-10-06-13_07_10.pdf'),
+	(7, 3, 'KHS_RESTU ZEBUA.pdf');
+/*!40000 ALTER TABLE `users_files` ENABLE KEYS */;
 
 -- Dumping structure for table rekrutmen.users_karyawan
 CREATE TABLE IF NOT EXISTS `users_karyawan` (
@@ -144,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `users_karyawan` (
   `pendidikan_terakhir` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table rekrutmen.users_karyawan: ~1 rows (approximately)
+-- Dumping data for table rekrutmen.users_karyawan: ~0 rows (approximately)
 DELETE FROM `users_karyawan`;
 /*!40000 ALTER TABLE `users_karyawan` DISABLE KEYS */;
 INSERT INTO `users_karyawan` (`id_user`, `ringkasan_profile`, `jk`, `tahun_lahir`, `status_perkawinan`, `alamat`, `telepon`, `riwayat_pendidikan`, `keahlian`, `lama_bekerja`, `pengalaman_bekerja`, `pendidikan_terakhir`) VALUES

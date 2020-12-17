@@ -183,6 +183,7 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+                    
 
 
                     <div class="form-group">
@@ -190,11 +191,48 @@
                         <textarea name="pengalaman_bekerja" id="i-pengalaman_bekerja" cols="30" rows="10" class="form-control"><?php echo $pengalaman_bekerja; ?></textarea>
                     </div>
                                 
+                    <div class="form-group">
+                        <input type="file" name="berkas_uploader" id="i-berkas_uploader" class="d-none">
+                        <div class="berkas-uploader">
+                            <div class="berkas-uploader_title">Upload Berkas</div>
+                        </div>
+                    </div>
+                    
+
+                    <ul class="berkas-lists">
+                        
+                        <?php 
+                        
+                        $db = Database::connect();
+                        $id_user = session()->get('user')['id_user'];
+                        $query = $db->query( "SELECT * FROM users_files WHERE id_user='{$id_user}'");
+                        
+                        
+                        ?>
+
+                        <?php while( $file = $query->fetch_array() ) : ?>
+
+                            <li>
+                                <a href="<?php echo base_url('/uploads/' . $file['lokasi_file']) ?>" download>
+                                    <span><?php echo $file['lokasi_file'] ?></span>
+                                    
+                                </a>
+                                <a href="javascript:void(0)" class="delete-user-berkas" data-id="<?php echo $file['id_file'] ?>">
+                                    <span class="ml-2 text-danger">Hapus</span>
+                                </a>
+                            </li>
+
+                        <?php endwhile; ?>
+
+                    </ul>
+                                
                     <button class="btn btn-lg btn-primary rounded-0">Simpan Resume</button>
                 </form>
 
             </div>
         </div>
+
+
 
 
     </div>
