@@ -6,7 +6,7 @@
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8 */; 
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
@@ -14,7 +14,7 @@
 -- Dumping structure for table rekrutmen.jenjang
 CREATE TABLE IF NOT EXISTS `jenjang` (
   `id_jenjang` bigint(20) NOT NULL AUTO_INCREMENT,
-  `nama_jenjang` varchar(50) NOT NULL DEFAULT '',
+  `nama_jenjang` varchar(50) NOT NULL DEFAULT '', 
   PRIMARY KEY (`id_jenjang`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
