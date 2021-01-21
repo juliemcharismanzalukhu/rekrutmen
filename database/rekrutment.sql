@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `jenjang` (
   PRIMARY KEY (`id_jenjang`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table rekrutmen.jenjang: ~2 rows (approximately)
+-- Dumping data for table rekrutmen.jenjang: ~2 rows (approximately) wow
 DELETE FROM `jenjang`;
 /*!40000 ALTER TABLE `jenjang` DISABLE KEYS */;
 INSERT INTO `jenjang` (`id_jenjang`, `nama_jenjang`) VALUES
